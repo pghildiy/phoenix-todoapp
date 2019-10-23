@@ -13,6 +13,7 @@ WORKDIR /app
 RUN mix local.hex --force
 
 # Compile the project
+RUN mix deps.get
 RUN mix do compile
 
 CMD ["mix", "phx.server"]
