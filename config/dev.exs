@@ -50,7 +50,7 @@ config :phoenix, :plug_init_mode, :runtime
 # Configure your database
 config :todo_app, TodoApp.Repo,
   username: "postgres",
-  password: "postgres",
-  database: "todo_app_dev",
-  hostname: "localhost",
+  password: "p0stgr3s",
+  database: "postgres",
+  hostname: "demo-postgres-demo-postgresql.demo",
   pool_size: 10
