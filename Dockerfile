@@ -17,4 +17,6 @@ RUN mix local.rebar --force
 RUN mix deps.get
 RUN mix do compile
 
+USER default
+
 CMD ["/app/entrypoint.sh"]
