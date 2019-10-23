@@ -4,12 +4,12 @@ FROM elixir:latest
 RUN apt-get update && \
   apt-get install -y postgresql-client
 
-RUN adduser -D -h /home/app app
+#RUN adduser -D -h /home/app app
 
 # Create app directory and copy the Elixir projects into it
-#RUN mkdir /app
-COPY . /home/app
-WORKDIR /home/app
+RUN mkdir /app
+COPY . /app
+WORKDIR /app
 
 # Install hex package manager
 RUN mix local.hex --force
@@ -19,6 +19,6 @@ RUN mix local.rebar --force
 RUN mix deps.get
 RUN mix do compile
 #RUN chown -R app: /home/app
-USER app
+USER default
 
-CMD ["/app/entrypoint.sh"]
+CMD ["./app/entrypoint.sh"]
