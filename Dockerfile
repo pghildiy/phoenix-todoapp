@@ -4,7 +4,7 @@ FROM elixir:latest
 RUN apt-get update && \
   apt-get install -y postgresql-client
 
-RUN adduser -D -m app
+RUN adduser -D -h /home/app app
 
 # Create app directory and copy the Elixir projects into it
 #RUN mkdir /app
