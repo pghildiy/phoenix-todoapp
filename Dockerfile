@@ -1,13 +1,13 @@
 # ---- Build Stage ----
-FROM elixir:alpine AS app_builder
+FROM elixir:latest AS app_builder
 
 # Set environment variables for building the application
 ENV MIX_ENV=dev \
     TEST=1 \
     LANG=C.UTF-8
 
-RUN apk add --update git && \
-    rm -rf /var/cache/apk/*
+#RUN apk add --update git && \
+#    rm -rf /var/cache/apk/*
 
 # Install hex and rebar
 RUN mix local.hex --force && \
