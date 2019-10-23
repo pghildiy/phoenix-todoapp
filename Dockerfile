@@ -26,7 +26,7 @@ COPY mix.lock .
 
 # Fetch the application dependencies and build the application
 RUN mix deps.get
-RUN mix deps.compile
+RUN mix do compile
 RUN mix phx.digest
 RUN mix release
 
