@@ -18,4 +18,4 @@ if [[ -z `psql -Atqc "\\list $PGDATABASE"` ]]; then
 fi
 
 #exec mix phx.server
-exec ./dev/rel/todo_app/bin/todo_app 
+exec ./dev/rel/todo_app/bin/todo_app start
