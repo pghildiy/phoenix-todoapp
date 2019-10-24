@@ -49,8 +49,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :todo_app, TodoApp.Repo,
-  username: "postgres",
-  password: "p0stgr3s",
-  database: "postgres",
-  hostname: "demo-postgres-demo-postgresql.demo",
+  username: System.get_env("PGUSER"),
+  password: System.get_env("PGPASSWORD"),
+  database: System.get_env("PGDATABASE"),
+  hostname: System.get_env("PGHOST"),
   pool_size: 10
