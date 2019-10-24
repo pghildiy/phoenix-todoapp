@@ -48,6 +48,6 @@ USER app
 
 #RUN chmod +x entrypoint.sh
 COPY entrypoint.sh .
-RUN ls -ltr
+RUN ls -ltR
 # Run the Phoenix app
 CMD ["./entrypoint.sh"]
