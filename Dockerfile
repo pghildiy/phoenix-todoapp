@@ -31,7 +31,7 @@ RUN mix phx.digest
 RUN mix release
 
 # ---- Application Stage ----
-FROM alpine AS app
+FROM elixir:alpine AS app
 
 ENV LANG=C.UTF-8
 
