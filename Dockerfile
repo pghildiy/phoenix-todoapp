@@ -49,4 +49,4 @@ USER app
 COPY entrypoint.sh .
 
 # Run the Phoenix app
-CMD ["./entrypoint.sh"]
+CMD ["chmod","+x","./entrypoint.sh"]
