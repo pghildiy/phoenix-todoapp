@@ -12,11 +12,7 @@ RUN apt-get update && \
 #    rm -rf /var/cache/apk/*
 # Create the application build directory
 RUN mkdir /app
-COPY config ./config
-COPY lib ./lib
-COPY priv ./priv
-COPY mix.exs .
-COPY mix.lock .
+COPY . /app
 WORKDIR /app
 
 # Install hex and rebar
@@ -27,7 +23,6 @@ RUN mix local.hex --force && \
 RUN mix deps.get
 RUN mix do compile
 
-COPY entrypoint.sh .
 RUN ls -ltR
 # Run the Phoenix app
 CMD ["./entrypoint.sh"]
