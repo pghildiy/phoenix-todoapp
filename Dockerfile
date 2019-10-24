@@ -1,5 +1,5 @@
 # ---- Build Stage ----
-FROM elixir:latest AS app_builder
+FROM elixir:alpine AS app_builder
 
 # Set environment variables for building the application
 ENV MIX_ENV=dev \
@@ -26,28 +26,11 @@ COPY mix.lock .
 
 # Fetch the application dependencies and build the application
 RUN mix deps.get
-RUN mix do compile
-RUN mix phx.digest
-RUN mix release
-
-# ---- Application Stage ----
-FROM elixir:alpine AS app
-
-ENV LANG=C.UTF-8
 
 # Install openssl
 RUN apk add --update openssl ncurses-libs postgresql-client && \
     rm -rf /var/cache/apk/*
 
-# Copy over the build artifact from the previous step and create a non root user
-RUN adduser -D -h /home/app app
-WORKDIR /home/app
-COPY --from=app_builder /app/_build .
-RUN chown -R app: ./dev
-USER app
-
-#RUN chmod +x entrypoint.sh
-COPY entrypoint.sh .
 RUN ls -ltR
 # Run the Phoenix app
 CMD ["./entrypoint.sh"]
