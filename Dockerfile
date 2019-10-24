@@ -46,7 +46,7 @@ COPY --from=app_builder /app/_build .
 RUN chown -R app: ./dev
 USER app
 
+RUN chmod +x entrypoint.sh
 COPY entrypoint.sh .
-RUN chmod +x ./entrypoint.sh
 # Run the Phoenix app
 CMD ["./entrypoint.sh"]
